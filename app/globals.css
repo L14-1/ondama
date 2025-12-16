@@ -1,15 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fcf7f2;
+  --foreground: #4a4139;
+  --foreground-muted: #6b5f54;
+  --primary: #91ad92;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-lora: var(--font-lora);
+  --font-crimson: var(--font-crimson);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +27,23 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-lora), serif;
+}
+
+/* Custom scrollbar styles for modal */
+.modal-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(145, 173, 146, 0.3);
+  border-radius: 4px;
+}
+
+.modal-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(145, 173, 146, 0.5);
 }
