@@ -9,7 +9,7 @@ export default function Analytics() {
 			import("@plausible-analytics/tracker").then(({ init }) => {
 				init({
 					domain: "ondama.fr",
-					endpoint: "https://analytics.nicolasmaitre.dev",
+					endpoint: "https://analytics.nicolasmaitre.dev/api/event",
 				});
 			});
 		}
