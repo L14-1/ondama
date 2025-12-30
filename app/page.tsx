@@ -9,6 +9,9 @@ import {
 } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import ContactForm from "./components/ContactForm";
+import ContactModal from "./components/ContactModal";
+import FloatingCTA from "./components/FloatingCTA";
 
 interface Service {
 	title: string;
@@ -153,10 +156,11 @@ export default function Home() {
 	});
 
 	const [selectedService, setSelectedService] = useState<Service | null>(null);
+	const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
 	const services: Service[] = [
 		{
-			title: "Pathologies gynécologique",
+			title: "Pathologies gynécologiques",
 			description:
 				"Soulager les douleurs gynécologiques par la relaxation et le mouvement doux.",
 			detailedDescription:
@@ -420,9 +424,9 @@ export default function Home() {
 							</h2>
 						</div>
 						<p className="max-w-2xl text-base leading-relaxed text-foreground/60 md:text-lg">
-							Notre vision c&apos;est de proposer une offre à forte valeur
-							humaine, adaptée aux besoins de bien-être, de soulagement et de
-							reconnexion au corps.
+							Notre vision, c'est de proposer une offre à forte valeur humaine,
+							adaptée aux besoins de bien-être, de soulagement et de reconnexion
+							au corps.
 						</p>
 					</div>
 				</FadeInSection>
@@ -702,14 +706,31 @@ export default function Home() {
 
 				{/* Contact Section */}
 				<FadeInSection delay={0.2}>
-					<div className="relative z-10 mt-8 flex items-center gap-2">
-						<span className="text-xl text-primary">✧</span>
-						<h2 className="font-crimson text-3xl font-semibold text-foreground md:text-4xl">
-							Contact
-						</h2>
+					<div
+						id="contact-section"
+						className="relative z-10 mt-8 flex w-full flex-col gap-8"
+					>
+						<div className="flex w-full items-center justify-center gap-2">
+							<span className="text-xl text-primary">✧</span>
+							<h2 className="font-crimson text-3xl font-semibold text-foreground md:text-4xl">
+								Contact
+							</h2>
+						</div>
+						<div className="w-full rounded-3xl bg-white/60 p-8 shadow-sm md:p-10">
+							<ContactForm />
+						</div>
 					</div>
 				</FadeInSection>
 			</main>
+
+			{/* Floating CTA */}
+			<FloatingCTA onClick={() => setIsContactModalOpen(true)} />
+
+			{/* Contact Modal */}
+			<ContactModal
+				isOpen={isContactModalOpen}
+				onClose={() => setIsContactModalOpen(false)}
+			/>
 
 			{/* Modal */}
 			<AnimatePresence>
