@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Lora, Crimson_Text } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
-import Analytics from "./components/Analytics";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,10 +37,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Script defer src="https://umami.nicolasmaitre.dev/script.js" data-website-id="39cc0532-9e35-431f-af49-93e9338f23f1" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${lora.variable} ${crimsonText.variable} antialiased`}
       >
-        <Analytics />
         {children}
       </body>
     </html>
